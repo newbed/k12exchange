@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603193726) do
+ActiveRecord::Schema.define(version: 20150603195502) do
+
+  create_table "docs", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.float    "avg_rating"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
