@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Doc resource:
+  # CREATE
+  get "/docs/new", :controller => "docs", :action => "new"
+  post "/create_doc", :controller => "docs", :action => "create"
+
+  # READ
+  get "/docs", :controller => "docs", :action => "index"
+  get "/docs/:id", :controller => "docs", :action => "show"
+
+  # UPDATE
+  get "/docs/:id/edit", :controller => "docs", :action => "edit"
+  post "/update_doc/:id", :controller => "docs", :action => "update"
+
+  # DELETE
+  get "/delete_doc/:id", :controller => "docs", :action => "destroy"
+  #------------------------------
+
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
