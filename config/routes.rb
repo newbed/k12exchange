@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "docs#index"
+
   # Routes for the Rating resource:
   # CREATE
   get "/ratings/new", :controller => "ratings", :action => "new"
