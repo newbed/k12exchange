@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'starter_generators', :git => "http://github.com/rbetina/starter_generators.git", :branch => "simple"
+
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -53,3 +56,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'rspec-rails', group: [:test, :development]
+gem 'capybara', group: [:test, :development]
+gem 'quiet_assets', group: [:test, :development]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
