@@ -17,6 +17,7 @@ class DocsController < ApplicationController
     @doc.title = params[:title]
     @doc.avg_rating = params[:avg_rating]
     @doc.description = params[:description]
+    @doc.user_id = current_user
 
     if @doc.save
       redirect_to "/docs", :notice => "Doc created successfully."
@@ -36,6 +37,7 @@ class DocsController < ApplicationController
     @doc.title = params[:title]
     @doc.avg_rating = params[:avg_rating]
     @doc.description = params[:description]
+    @doc.user_id = current_user
 
     if @doc.save
       redirect_to "/docs", :notice => "Doc updated successfully."
