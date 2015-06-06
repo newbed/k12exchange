@@ -18,7 +18,7 @@
         <h3 class="panel-title">Add Doc</h3>
       </div>
       <div class="panel-body">
-        <form action="/create_doc" method="post" class="form-horizontal">
+        <form action="/create_doc" method="post" class="form-horizontal" enctype="multipart/form-data">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -28,7 +28,7 @@
               Url
             </label>
             <div class="col-sm-10">
-              <input type="text" id="url" name="url" placeholder="Url" class="form-control" value="<%= @doc.url %>">
+              <input type="file" id="url" name="url" placeholder="Url" class="form-control" value="<%= @doc.url %>">
             </div>
           </div>
 
@@ -39,6 +39,16 @@
             </label>
             <div class="col-sm-10">
               <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @doc.title %>">
+            </div>
+          </div>
+
+          <!-- Label and input for title -->
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">
+              Kind
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="kind" name="kind" placeholder="Kind" class="form-control" value="<%= @doc.kind %>">
             </div>
           </div>
 

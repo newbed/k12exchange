@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603205807) do
+ActiveRecord::Schema.define(version: 20150606182819) do
 
   create_table "docs", force: :cascade do |t|
     t.string   "url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150603205807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_id"
+    t.string   "kind"
   end
 
   create_table "ratings", force: :cascade do |t|
