@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @rating.errors.any? %>
-  <% @rating.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @rating.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -21,6 +21,15 @@
         <form action="/create_rating" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for doc_id -->
+          <div class="form-group">
+            <label for="doc_id" class="col-sm-2 control-label">
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="doc_id" name="doc_id" placeholder="" class="form-control" value="">
+            </div>
+          </div>
 
           <!-- Label and input for stars -->
           <div class="form-group">

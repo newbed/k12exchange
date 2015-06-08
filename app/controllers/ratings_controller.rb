@@ -15,6 +15,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new
     @rating.stars = params[:stars]
     @rating.comment = params[:comment]
+    @rating.doc_id = params[:doc_id]
 
     if @rating.save
       redirect_to "/ratings", :notice => "Rating created successfully."
