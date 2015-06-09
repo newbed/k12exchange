@@ -7,4 +7,10 @@ class Rating < ActiveRecord::Base
   belongs_to :doc
   belongs_to :user
 
+  after_save :update_doc_rating
+
+  def update_doc_rating
+    doc.update_avg_rating
+  end
+
 end

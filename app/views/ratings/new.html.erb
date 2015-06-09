@@ -27,7 +27,7 @@
             <label for="doc_id" class="col-sm-2 control-label">
             </label>
             <div class="col-sm-10">
-              <input type="text" id="doc_id" name="doc_id" placeholder="" class="form-control" value="">
+              <%= select_tag(:doc_id, options_from_collection_for_select(Doc.all, :id, :title, @rating.doc_id), :class => "form-control") %>
             </div>
           </div>
 

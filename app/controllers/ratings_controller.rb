@@ -18,7 +18,8 @@ class RatingsController < ApplicationController
     @rating.doc_id = params[:doc_id]
 
     if @rating.save
-      redirect_to "/ratings", :notice => "Rating created successfully."
+      @rating.doc.avg_rating = 2
+      redirect_to "/", :notice => "Rating created successfully."
     else
       render 'new'
     end
@@ -33,8 +34,10 @@ class RatingsController < ApplicationController
 
     @rating.stars = params[:stars]
     @rating.comment = params[:comment]
+    @rating.doc_id = @rating.doc_id
 
     if @rating.save
+      @rating.doc.avg_rating = 4
       redirect_to "/ratings", :notice => "Rating updated successfully."
     else
       render 'edit'
