@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @doc.errors.any? %>
-  <% @doc.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @doc.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -42,18 +42,20 @@
             </div>
           </div>
 
-          <!-- Label and input for title -->
+          <!-- Label and input for kind -->
           <div class="form-group">
-            <label for="title" class="col-sm-2 control-label">
+            <label for="kind" class="col-sm-2 control-label">
               Kind
             </label>
             <div class="col-sm-10">
-              <input type="text" id="kind" name="kind" placeholder="Kind" class="form-control" value="<%= @doc.kind %>">
+              <%= select_tag "kind",
+              options_for_select([ "Select Kind", "Presentation", "Assessment", "Homework", "Class", "Activities" ], @doc.kind),
+              { :class => 'form-control'} %>
             </div>
           </div>
 
           <!-- Label and input for avg_rating -->
-          <div class="form-group">
+<!--           <div class="form-group">
             <label for="avg_rating" class="col-sm-2 control-label">
               Avg rating
             </label>
@@ -61,7 +63,7 @@
               <input type="text" id="avg_rating" name="avg_rating" placeholder="Avg rating" class="form-control" value="<%= @doc.avg_rating %>">
             </div>
           </div>
-
+ -->
           <!-- Label and input for description -->
           <div class="form-group">
             <label for="description" class="col-sm-2 control-label">

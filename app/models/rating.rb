@@ -2,8 +2,8 @@ class Rating < ActiveRecord::Base
   validates :stars, presence: true
   validates :stars, inclusion: 1..5
 
-  validates :doc_id, presence: true, uniqueness: true
-  validates :user_id, presence: true, uniqueness: true
+  validates :doc_id, presence: true
+  validates :user_id, presence: true
 
   belongs_to :doc
   belongs_to :user
