@@ -1,6 +1,9 @@
 class DocsController < ApplicationController
   def index
     @docs = Doc.all
+    # @q = Doc.ransack(params[:q])
+    # @docs = @q.result
+
   end
 
   def show

@@ -31,7 +31,7 @@
               <input type="file" id="url" name="url" placeholder="Url" class="form-control" value="<%= @doc.url %>">
          <!-- <input type="hidden" name="doc[url_cache">
               <%= image_tag(@doc.url) if @doc.url? %>
-          -->
+            -->
           </div>
 
         </div>
@@ -73,7 +73,11 @@
             </button>
             or
             <a href="/docs/<%= @doc.id %>">Cancel</a>
+            <a href="/delete_doc/<%= @doc.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
+
         </div>
       </form>
     </div>

@@ -17,42 +17,50 @@
 
 <div class="row isotope-container">
   <% @docs.each do |doc| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+  <div class="col-md-9 col-md-offset-3  isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"> <%= doc.title %> #<%= doc.id %></h3>
+      <a href="/docs/<%= doc.id %>"><h3 class="panel-title"><%= doc.title %> #<%= doc.id %></h3></a>
       </div>
       <div class="panel-body">
+
+        <div>
+          <div class="col-md-3">
+            <dl>
+              <dt>Kind</dt>
+              <dd><%= doc.kind %></dd>
+            </dl>
+          </div>
+          <div class="col-md-3">
+            <dl>
+              <dt>Avg rating</dt>
+              <dd><%= doc.avg_rating %></dd>
+            </dl>
+          </div>
+          <div>
+            <dl class="col-md-3">
+              <dt>User</dt>
+              <dd><%= doc.user.email %></dd>
+            </dl>
+          </div>
+          <div class="col-md-3">
+            <dl>
+              <dt>Download</dt>
+              <dd><a href="<%= doc.url %>">Click Here</a></dd>
+            </dl>
+          </div>
+        </div>
         <dl>
-          <dt>Kind</dt>
-          <dd><%= doc.kind %></dd>
-
-          <dt>Avg rating</dt>
-          <dd><%= doc.avg_rating %></dd>
-
-          <dt>Description</dt>
-          <dd><%= doc.description %></dd>
-
-          <dt>User</dt>
-          <dd><%= doc.user.email %></dd>
-
-          <dt>Download</dt>
-          <dd><a href="<%= doc.url %>">Click Here</a></dd>
-
+          <div class="col-md-12">
+            <dt>Description</dt>
+            <dd><%= doc.description %></dd>
+          </div>
         </dl>
-        <div class="btn-group btn-group-justified">
+<!--         <div class="btn-group btn-group-justified">
           <a href="/docs/<%= doc.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
-
-          <a href="/docs/<%= doc.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_doc/<%= doc.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
