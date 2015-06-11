@@ -10,7 +10,12 @@ class Doc < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
 
   def update_avg_rating
-    self.avg_rating = ratings.average(:stars).to_f.round(1)
+    self.avg_rating = ratings.average(:stars).to_f.round(2)
+
+    if self.avg_rating.zero?
+      self.avg_rating = nil
+    else
+    end
     save
   end
 

@@ -4,24 +4,24 @@ class RatingsController < ApplicationController
   end
 
   def show
-    @rating = Rating.find(params[:id])
+    @rating  = Rating.find(params[:id])
   end
 
   def new
-    @rating = Rating.new
+    @rating  = Rating.new
   end
 
   def create
-    @rating = Rating.new
-    @rating.stars = params[:stars]
+    @rating         = Rating.new
+    @rating.stars   = params[:stars]
     @rating.comment = params[:comment]
-    @rating.doc_id = params[:doc_id]
+    @rating.doc_id  = params[:doc_id]
+    @rating.user_id = current_user.id
 
     if @rating.save
-      @rating.doc.avg_rating = 2
-      redirect_to "/", :notice => "Rating created successfully."
+      redirect_to :back, :notice => "Rating created successfully."
     else
-      render 'new'
+      redirect_to :back, :notice => "Rating not saved"
     end
   end
 
@@ -32,15 +32,15 @@ class RatingsController < ApplicationController
   def update
     @rating = Rating.find(params[:id])
 
-    @rating.stars = params[:stars]
+    @rating.stars   = params[:stars]
     @rating.comment = params[:comment]
-    @rating.doc_id = @rating.doc_id
+    @rating.doc_id  = @rating.doc_id
+    @rating.user_id = current_user.id
 
     if @rating.save
-      @rating.doc.avg_rating = 4
-      redirect_to "/ratings", :notice => "Rating updated successfully."
+      redirect_to :back, :notice => "Rating updated successfully."
     else
-      render 'edit'
+      redirect_to :back, :notice => "Rating not saved"
     end
   end
 

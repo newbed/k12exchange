@@ -1,13 +1,14 @@
 class DocsController < ApplicationController
   def index
-    @docs = Doc.all
-    # @q = Doc.ransack(params[:q])
-    # @docs = @q.result
+    # @docs = Doc.all
+    @q = Doc.ransack(params[:q])
+    @docs = @q.result
 
   end
 
   def show
     @doc = Doc.find(params[:id])
+    @rating = @doc.ratings.find_by_user_id(current_user.id)
   end
 
   def new
@@ -58,4 +59,9 @@ class DocsController < ApplicationController
 
     redirect_to "/docs", :notice => "Doc deleted."
   end
+
+  def user
+    @docs = current_user.docs
+  end
+
 end

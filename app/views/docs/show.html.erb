@@ -10,8 +10,8 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Url</dt>
-              <dd><%= @doc.url %></dd>
+              <dt>Download</dt>
+              <dd><a href="<%= @doc.url %>">Click Here</a></dd>
 
               <dt>Title</dt>
               <dd><%= @doc.title %></dd>
@@ -19,10 +19,14 @@
               <dt>Avg rating</dt>
               <dd><%= @doc.avg_rating %></dd>
 
+              <dt>User</dt>
+              <dd><%= @doc.user.email %></dd>
+
               <dt>Description</dt>
               <dd><%= @doc.description %></dd>
 
             </dl>
+            <% if current_user.id == @doc.user.id %>
             <div class="btn-group btn-group-justified">
 
               <a href="/docs/<%= @doc.id %>/edit" class="btn btn-warning">
@@ -33,11 +37,58 @@
                 <i class="fa fa-trash-o"></i>
               </a>
             </div>
+            <% else %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
 
+    <% if @rating != nil %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Rating</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_rating/<%= @rating.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for stars -->
+          <div class="form-group">
+            <label for="stars" class="col-sm-2 control-label">
+              Stars
+            </label>
+            <div class="col-sm-10">
+              <%= select_tag "stars",
+              options_for_select([ 1,2,3,4,5 ], @rating.stars),
+              { :class => 'form-control'} %>
+            </div>
+          </div>
+
+          <!-- Label and input for comment -->
+          <div class="form-group">
+            <label for="comment" class="col-sm-2 control-label">
+              Comment
+            </label>
+            <div class="col-sm-10">
+              <textarea id="comment" name="comment" placeholder="Comment" class="form-control" rows="3"><%= @rating.comment %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Rating
+              </button>
+              or
+              <a href="/ratings/<%= @rating.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <% else %>
     <div class="panel panel-default">
       <div class="panel-heading"><h3 class="panel-title">Rate this resource</h3></div>
       <div class="panel-body">
@@ -91,6 +142,7 @@
         </form>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
 
